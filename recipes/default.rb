@@ -24,7 +24,10 @@ channels.each do |chan|
 end
 
 php_pear "PEAR" do
+  cur_version = `pear -V| head -1| awk -F': ' '{print $2}'`
   action :upgrade
+  # This feels super ghetto. Open to improvements.
+  not_if { Gem::Version.new(cur_version) > Gem::Version.new('1.9.0') }
 end
 
 php_pear "PHPUnit" do
