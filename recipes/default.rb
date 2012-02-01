@@ -32,7 +32,7 @@ end
 
 php_pear "PHPUnit" do
   channel "phpunit"
-  version "3.6.4"
+  version "3.6.7"
   action :install
 end
 
