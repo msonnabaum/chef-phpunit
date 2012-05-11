@@ -1,5 +1,8 @@
+# 
 # Author:: Mark Sonnabaum <mark.sonnabaum@acquia.com>
-# Cookbook Name::  phpunit
+# Contributor:: Patrick Connolly <patrick@myplanetdigital.com>
+#
+# Cookbook Name:: phpunit
 # Recipe:: default
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,11 +19,8 @@
 
 include_recipe "php"
 
-channels = %w{pear.phpunit.de components.ez.no pear.symfony-project.com}
-channels.each do |chan|
-  php_pear_channel chan do
-    action [:discover, :update]
-  end
+php_pear_channel "pear.phpunit.de" do
+  action [:discover, :update]
 end
 
 php_pear "PEAR" do
@@ -35,4 +35,3 @@ php_pear "PHPUnit" do
   version "3.6.7"
   action :install
 end
-
