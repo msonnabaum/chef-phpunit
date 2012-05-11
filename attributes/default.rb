@@ -3,7 +3,7 @@
 # Contributor:: Patrick Connolly <patrick@myplanetdigital.com>
 #
 # Cookbook Name:: phpunit
-# Recipe:: default
+# Attrbitutes:: default
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,21 +17,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe "php"
-
-php_pear_channel "pear.phpunit.de" do
-  action [:discover, :update]
-end
-
-php_pear "PEAR" do
-  cur_version = `pear -V| head -1| awk -F': ' '{print $2}'`
-  action :upgrade
-  # This feels super ghetto. Open to improvements.
-  not_if { Gem::Version.new(cur_version) > Gem::Version.new('1.9.0') }
-end
-
-php_pear "PHPUnit" do
-  channel "phpunit"
-  version node['phpunit']['version']
-  action :install
-end
+default['phpunit']['version'] = "3.6.7"
