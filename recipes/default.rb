@@ -19,8 +19,12 @@
 
 include_recipe "php"
 
-php_pear_channel "pear.phpunit.de" do
-  action [:discover, :update]
+# phpunit/PHPUnit depends on symfony/YAML
+channels = %w{pear.phpunit.de pear.symfony-project.com}
+channels.each do |chan|
+  php_pear_channel chan do
+    action [:discover, :update]
+  end
 end
 
 php_pear "PEAR" do
