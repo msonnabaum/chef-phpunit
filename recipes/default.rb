@@ -34,7 +34,7 @@ end
 
 php_pear "File_Iterator" do
   channel "phpunit"
-	action :install
+  action :install
 end
 
 php_pear "Text_Template" do
