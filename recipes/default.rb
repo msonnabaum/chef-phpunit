@@ -34,13 +34,13 @@ end
 
 php_pear "File_Iterator" do
   channel "phpunit"
-       action :install
+	action :install
 end
 
 php_pear "Text_Template" do
   channel "phpunit"
-       version "1.1.3"
-       action :install
+  version "1.1.3"
+  action :install
 end
 
 php_pear "PHPUnit" do
