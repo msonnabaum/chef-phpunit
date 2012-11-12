@@ -32,6 +32,17 @@ php_pear "PEAR-phpunit" do
   action :upgrade
 end
 
+php_pear "File_Iterator" do
+  channel "phpunit"
+  action :install
+end
+
+php_pear "Text_Template" do
+  channel "phpunit"
+  version "1.1.3"
+  action :install
+end
+
 php_pear "PHPUnit" do
   channel "phpunit"
   version node['phpunit']['version']
