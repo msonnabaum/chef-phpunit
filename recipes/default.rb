@@ -27,11 +27,22 @@ channels.each do |chan|
   end
 end
 
-php_pear "PEAR" do
-  cur_version = `pear -V| head -1| awk -F': ' '{print $2}'`
+php_pear "PEAR-phpunit" do
+  package_name "PEAR"
+  version "1.9.0"
   action :upgrade
-  # This feels super ghetto. Open to improvements.
-  not_if { Gem::Version.new(cur_version) > Gem::Version.new('1.9.0') }
+end
+
+php_pear "File_Iterator" do
+  channel "phpunit"
+  version "1.3.2"
+  action :install
+end
+
+php_pear "Text_Template" do
+  channel "phpunit"
+  version "1.1.2"
+  action :install
 end
 
 php_pear "PHPUnit" do
