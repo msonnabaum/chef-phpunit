@@ -28,6 +28,7 @@ channels.each do |chan|
 end
 
 php_pear "PEAR-phpunit" do
+  package_name "PEAR"
   version "1.9.0"
   action :upgrade
 end
